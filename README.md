@@ -1,3 +1,4 @@
 # HelpDesk
 HomeWork A-Level (collaboration project)
-test
+Хранятся все изменения со всех веток проекта (черновой вариант проекта)
+
