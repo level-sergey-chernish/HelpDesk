@@ -1,5 +1,6 @@
 # HelpDesk
 HomeWork A-Level (collaboration project)
 
-Разработака UI: Основная программа + валидация
-(отв. Chernysh)
+Разработака осн. функционала.
+Библиотека классов + библиотека класса с методами
+(отв. Petrenko + Barinova)(CodeReview - Shamanov)
