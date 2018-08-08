@@ -9,12 +9,12 @@ namespace ClassTask
 {
     public abstract class Task
     {
-        public string Name { get; set; }
-        public double Priority { get; set; }
-        public double Severity { get; set; }
-        public double difficulty;
-        public bool IsFixed { get; set; }
-        public double Difficulty
+        internal string Name { get; set; }
+        internal double Priority { get; set; }
+        internal double Severity { get; set; }
+        internal double difficulty;
+        internal bool IsFixed = false;
+        private double Difficulty
         {
             get
             {
@@ -25,11 +25,23 @@ namespace ClassTask
                 difficulty = TaskDifficulty();
             }
         }
-        public double TaskDifficulty()
+        /// <summary>
+        /// Count difficulty of task. (Priority * Severity)
+        /// </summary>
+        /// <returns> Returns double Difficulty </returns>
+        internal double TaskDifficulty()
+        {
+           return _TaskDifficulty();
+        }
+        private double _TaskDifficulty()
         {
             return Difficulty = Priority * Severity;
         }
-
+        /// <summary>
+        /// Indicates Task fixed or not, and if it's not fixed - substracts 1 point of difficulty.
+        /// Then check fix again.
+        /// </summary>
+        /// <returns> Returns Boolean meaning IsFixed </returns>
         public bool Fixed()
         {
             if (IsFixed)
