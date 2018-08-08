@@ -41,6 +41,7 @@ namespace ClassTask
             Random rnd = new Random();
             Thread.Sleep(350);
             tryFix = Convert.ToBoolean(rnd.Next(0, 1));
+
             if (tryFix)
             {
                 Difficulty--;
