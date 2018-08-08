@@ -39,7 +39,7 @@ namespace ClassTask
             }
             bool tryFix;
             Random rnd = new Random();
-            Thread.Sleep(350);
+            Thread.Sleep(50);
             tryFix = Convert.ToBoolean(rnd.Next(0, 1));
 
             if (tryFix)
