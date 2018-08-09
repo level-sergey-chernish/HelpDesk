@@ -37,8 +37,15 @@ namespace STATIC
             {
                 return canDecide = true;
             }
-
-
+        }
+        public static bool IsValueDouble(string input)
+        {
+            if (double.TryParse(input, result))
+            {
+                return true;
+            }
+            else
+                return false;
         }
     }
 }
