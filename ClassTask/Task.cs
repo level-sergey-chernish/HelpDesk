@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using HelpDesk;
 
-namespace ClassTask
+namespace HelpDesk
 {
     public abstract class Task
     {
@@ -16,14 +17,8 @@ namespace ClassTask
         internal bool IsFixed = false;
         private double Difficulty
         {
-            get
-            {
-                return difficulty;
-            }
-            set
-            {
-                difficulty = TaskDifficulty();
-            }
+            get => difficulty;
+            set => difficulty = TaskDifficulty();
         }
         /// <summary>
         /// Count difficulty of task. (Priority * Severity)

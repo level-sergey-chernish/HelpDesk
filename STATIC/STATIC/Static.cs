@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ClassTask;
+using HelpDesk;
 
-namespace STATIC
+namespace HelpDesk
 {
     public static class Static
     {   
@@ -17,7 +17,7 @@ namespace STATIC
         /// </summary>
         /// <param name="tasks"></param>
         /// <returns>Boolean meaning depends of solution </returns>
-        public static bool CheckDif(List<ClassTask.Task> tasks)
+        public static bool CheckDif(List<HelpDesk.Task> tasks)
         {
             bool canDecide;
             double counter = 0;
@@ -38,14 +38,14 @@ namespace STATIC
                 return canDecide = true;
             }
         }
-        public static bool IsValueDouble(string input)
-        {
-            if (double.TryParse(input, result))
-            {
-                return true;
-            }
-            else
-                return false;
-        }
+        //public static bool IsValueDouble(string input)
+        //{
+        //    if (double.TryParse(input, result))
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //        return false;
+        //}
     }
 }

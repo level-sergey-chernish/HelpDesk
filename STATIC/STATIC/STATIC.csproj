@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ClassTask">
-      <HintPath>..\..\ClassTask\HelpDesk\ClassTask\bin\Debug\ClassTask.dll</HintPath>
+      <HintPath>..\..\ClassTask\bin\Debug\ClassTask.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
