@@ -13,7 +13,7 @@ namespace HelpDesk
         internal string Name { get; set; }
         internal double Priority { get; set; }
         internal double Severity { get; set; }
-        internal double difficulty;
+        private double difficulty;
         internal bool IsFixed = false;
         //шкала от 1 до 5, влияет на плановую длительность исполнения.Если 1 - не меняется, 2 - 20%, 3 - 30% и т.д.)       
 
@@ -32,7 +32,7 @@ namespace HelpDesk
         }
         private double _TaskDifficulty()
         {
-            return (Difficulty = Priority * GetSeverity());
+            return (difficulty = Priority * GetSeverity());
         }
         /// Count Severity of the task. (Severity + %)
         private double CalculateSeverity()
