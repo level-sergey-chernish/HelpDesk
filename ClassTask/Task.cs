@@ -15,6 +15,8 @@ namespace HelpDesk
         internal double Severity { get; set; }
         internal double difficulty;
         internal bool IsFixed = false;
+        //шкала от 1 до 5, влияет на плановую длительность исполнения.Если 1 - не меняется, 2 - 20%, 3 - 30% и т.д.)       
+
         private double Difficulty
         {
             get => difficulty;
@@ -30,7 +32,20 @@ namespace HelpDesk
         }
         private double _TaskDifficulty()
         {
-            return Difficulty = Priority * Severity;
+            return (Difficulty = Priority * GetSeverity());
+        }
+        /// Count Severity of the task. (Severity + %)
+        private double CalculateSeverity()
+        {
+            if (Severity > 1 && Severity < 6)
+            {
+                Severity += (Severity * 10 / 100 * Severity);
+            }
+            return Severity;
+        }
+        public double GetSeverity()
+        {
+            return CalculateSeverity();
         }
         /// <summary>
         /// Indicates Task fixed or not, and if it's not fixed - substracts 1 point of difficulty.
@@ -44,10 +59,10 @@ namespace HelpDesk
                 Console.WriteLine($"{Name} is fixed!");
                 return IsFixed;
             }
-            bool tryFix;
+
             Random rnd = new Random();
             Thread.Sleep(50);
-            tryFix = Convert.ToBoolean(rnd.Next(0, 1));
+            bool tryFix = Convert.ToBoolean(rnd.Next(0, 1));
 
             if (tryFix)
             {
