@@ -13,9 +13,9 @@ namespace HelpDesk
         internal string Name { get; set; }
         internal double Priority { get; set; }
         internal double Severity { get; set; }
-        internal double difficulty;
+        private double difficulty;
         internal bool IsFixed = false;
-        private double Difficulty
+        internal double Difficulty
         {
             get => difficulty;
             set => difficulty = TaskDifficulty();
@@ -30,7 +30,7 @@ namespace HelpDesk
         }
         private double _TaskDifficulty()
         {
-            return Difficulty = Priority * Severity;
+            return difficulty = Priority * Severity;
         }
         /// <summary>
         /// Indicates Task fixed or not, and if it's not fixed - substracts 1 point of difficulty.
