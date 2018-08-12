@@ -1,0 +1,6 @@
+D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\libs\task\bin\Debug\task.dll
+D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\libs\task\bin\Debug\task.pdb
+D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\libs\task\obj\Debug\task.csproj.CoreCompileInputs.cache
+D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\libs\task\obj\Debug\task.dll
+D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\libs\task\obj\Debug\task.pdb
+D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\libs\task\obj\Debug\Task.csprojAssemblyReference.cache

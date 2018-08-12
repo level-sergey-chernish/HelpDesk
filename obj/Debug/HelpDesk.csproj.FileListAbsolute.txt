@@ -1,0 +1,10 @@
+D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\bin\Debug\HelpDesk.exe.config
+D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\bin\Debug\HelpDesk.exe
+D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\bin\Debug\HelpDesk.pdb
+D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\obj\Debug\HelpDesk.csprojAssemblyReference.cache
+D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\obj\Debug\HelpDesk.csproj.CoreCompileInputs.cache
+D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\obj\Debug\HelpDesk.exe
+D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\obj\Debug\HelpDesk.pdb
+D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\bin\Debug\task.dll
+D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\bin\Debug\task.pdb
+D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\obj\Debug\HelpDesk.csproj.CopyComplete
