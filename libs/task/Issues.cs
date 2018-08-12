@@ -62,6 +62,15 @@ namespace Issues
         }
 
         /// <summary>
+        /// If status true - Issue is resolved, if false - not resolved
+        /// </summary>
+        public bool IssueStatus
+        {
+            get => StatusCheck();
+        }
+
+
+        /// <summary>
         /// Issue type (see enum IssueTypes)
         /// </summary>
         public IssueTypes IssueType;
@@ -73,6 +82,20 @@ namespace Issues
         internal virtual double SeverityCalc()
         {
             return Difficulty * Priority * (0.1 * Difficulty + 1);
+        }
+
+        /// <summary>
+        /// Calculation of Issue resolving
+        /// </summary>
+        /// <returns></returns>
+        internal virtual bool StatusCheck()
+        {
+            if (Severity <= 0)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public enum IssueTypes

@@ -3,13 +3,101 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Issues
 {
     public static class IssueBuilder
     {
         /// <summary>
-        /// Minimal value of initial difficulty of issue
+        /// Overall attempts for resolving of the all Issues.
+        /// Eq. Scrum length. Can't be <= 0
+        /// Default is 30
+        /// </summary>
+        private static double _scrumLength = 30;
+
+        public static double ScrumLength
+        {
+            get => _scrumLength;
+
+            set
+            {
+                if (double.TryParse(Convert.ToString(value), out double isDouble) && 
+                    value >= 1)
+
+                {
+                    _scrumLength = value;
+                }
+                else
+                {
+                    throw new Exception("Property IssueBuilder.Complexity must be " +
+                        "double in range [1 - 1.7 × 10^308]!");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Overall severity of all Issues
+        /// </summary>
+        public static double Complexity
+        {
+            get => ComplexityCalc();
+        }
+
+        private static double ComplexityCalc()
+        {
+            double complexity = 0;
+            for (var i = 0; i < IssueTasksList.Count; i++)
+            {
+                complexity += IssueTasksList.ElementAt(i).Severity;
+            }
+            for (var i = 0; i < IssueBugsList.Count; i++)
+            {
+                complexity += IssueBugsList.ElementAt(i).Severity;
+            }
+            for (var i = 0; i < IssueTechnicalDeptsList.Count; i++)
+            {
+                complexity += IssueTechnicalDeptsList.ElementAt(i).Severity;
+            }
+            return complexity;
+        }
+
+        /// <summary>
+        /// Check if scrum possible. If overall severities
+        /// (Complexity) > Scrum length - return negative
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsScrumPossible()
+        {
+            if(Complexity > ScrumLength)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Make some artificial curved hands:
+        /// if true - intteration of scrum not complete
+        /// </summary>
+        /// <returns></returns>
+        public static bool ScrumCycleDeffect()
+        {
+            int isDefect;
+            Thread.Sleep(50);
+            Random rnd = new Random();
+            isDefect = rnd.Next(1, 3);
+            if (isDefect <= 2)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Minimal value of initial difficulty of issue.
+        /// Default value is 1
         /// </summary>
         private static int _difficultyMin = 1;
         
@@ -31,7 +119,8 @@ namespace Issues
         }
 
         /// <summary>
-        /// Minimal value of initial difficulty of issue
+        /// Minimal value of initial difficulty of issue.
+        /// Deafult value is 5
         /// </summary>
         private static int _difficultyMax = 5;
         
@@ -72,7 +161,8 @@ namespace Issues
         /// <summary>
         /// Contructor of IssueTask
         /// </summary>
-        public static IssueTask CreateIssueTask(string issueName, int issueDifficulty, Issue.IssueTypes issueType)
+        public static IssueTask CreateIssueTask(string issueName, int issueDifficulty, 
+            Issue.IssueTypes issueType)
         {
             return new IssueTask(issueName: issueName, issueDifficulty: issueDifficulty, issueType: issueType);
         }
@@ -80,13 +170,15 @@ namespace Issues
         /// <summary>
         /// Constructor of IssueBug
         /// </summary>
-        public static IssueBug CreateIssueBug(string issueName, int issueDifficulty, Issue.IssueTypes issueType)
+        public static IssueBug CreateIssueBug(string issueName, int issueDifficulty, 
+            Issue.IssueTypes issueType)
         {
             return new IssueBug(issueName: issueName, issueDifficulty: issueDifficulty, issueType: issueType);
         }
 
         //Constructor of IssueTechnicalDept
-        public static IssueTechnicalDept CreateIssueTechnicalDept(string issueName, int issueDifficulty, Issue.IssueTypes issueType)
+        public static IssueTechnicalDept CreateIssueTechnicalDept(string issueName, 
+            int issueDifficulty, Issue.IssueTypes issueType)
         {
             return new IssueTechnicalDept(issueName, issueDifficulty, issueType);
         }
