@@ -63,6 +63,80 @@ namespace Issues
         }
 
         /// <summary>
+        /// Overall number of all Issues
+        /// </summary>
+        public static int TotalIssuesQuantity
+        {
+            get => TotalIssuesCalc();
+        }
+
+        /// <summary>
+        /// Number of Issues like Task
+        /// </summary>
+        public static int TaskIssuesQuantity
+        {
+            get => IssueTasksCount();
+        }
+
+        /// <summary>
+        /// Number of Issues like Bug
+        /// </summary>
+        public static int BugIssuesQuantity
+        {
+            get => IssueBugsCount();
+        }
+
+        /// <summary>
+        /// Number of Issues like Technical Dept
+        /// </summary>
+        public static int TechnicalDeptsIssuesQuantity
+        {
+            get => IssueBugsCount();
+        }
+
+        /// <summary>
+        /// Overall number of Task Issues
+        /// </summary>
+        /// <returns></returns>
+        private static int TotalIssuesCalc()
+        {
+             return ( IssueTasksCount() + IssueBugsCount() + IssueTechnicalDeptsCount() );
+        }
+
+        private static int IssueTasksCount()
+        {
+            int totalIssues = 0;
+            for (var i = 0; i < IssueTasksList.Count; i++)
+            {
+                totalIssues += i;
+            }
+
+            return totalIssues;
+        }
+
+        private static int IssueBugsCount()
+        {
+            int totalIssues = 0;
+            for (var i = 0; i < IssueBugsList.Count; i++)
+            {
+                totalIssues += i;
+            }
+
+            return totalIssues;
+        }
+
+        private static int IssueTechnicalDeptsCount()
+        {
+            int totalIssues = 0;
+            for (var i = 0; i < IssueTechnicalDeptsList.Count; i++)
+            {
+                totalIssues += i;
+            }
+
+            return totalIssues;
+        }
+
+        /// <summary>
         /// Check if scrum possible. If overall severities
         /// (Complexity) > Scrum length - return negative
         /// </summary>

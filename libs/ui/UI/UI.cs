@@ -27,6 +27,13 @@ namespace UI
                 TextColorer.MenuChoise($"5 - Change difficulty range (default [{IssueBuilder.DifficultyMin} - {IssueBuilder.DifficultyMax}])");
                 TextColorer.MenuChoise("6 - Start scrum\n");
                 TextColorer.MenuChoise("q - Exit");
+
+                TextColorer.Alert(new String('_', 45));
+                TextColorer.Alert($"Total issues:{IssueBuilder.TotalIssuesQuantity}     ToDo Complexivity is:{IssueBuilder.Complexity}\n");
+                TextColorer.Alert($"Tasks:{IssueBuilder.TaskIssuesQuantity}     Bugs:Tasks:{IssueBuilder.BugIssuesQuantity}     " +
+                    $"Bugs:Tasks:{IssueBuilder.TechnicalDeptsIssuesQuantity}\n");
+                TextColorer.Alert(new String('_', 45));
+
                 Console.Write(">>:");
                 caseSwitch = Console.ReadLine().ToLower();
                 switch (caseSwitch)
