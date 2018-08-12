@@ -30,8 +30,8 @@ namespace UI
 
                 TextColorer.Alert(new String('_', 45));
                 TextColorer.Alert($"Total issues:{IssueBuilder.TotalIssuesQuantity}     ToDo Complexivity is:{IssueBuilder.Complexity}\n");
-                TextColorer.Alert($"Tasks:{IssueBuilder.TaskIssuesQuantity}     Bugs:Tasks:{IssueBuilder.BugIssuesQuantity}     " +
-                    $"Bugs:Tasks:{IssueBuilder.TechnicalDeptsIssuesQuantity}\n");
+                TextColorer.Alert($"Tasks:{IssueBuilder.TaskIssuesQuantity}     Bugs:{IssueBuilder.BugIssuesQuantity}     " +
+                    $"Technical Depts:{IssueBuilder.TechnicalDeptsIssuesQuantity}\n");
                 TextColorer.Alert(new String('_', 45));
 
                 Console.Write(">>:");
@@ -40,6 +40,7 @@ namespace UI
                 {
                     case "1":
                         Console.Clear();
+                        AddIssue();
                         menuExit = true;
                         break;
                     case "2":
@@ -72,9 +73,125 @@ namespace UI
                         menuExit = true;
                         TextColorer.Alert("WHAT?! - Have You been reading menu, bastard?! ");
                         Thread.Sleep(200);
+                        MainMenu();
                         break;
                 }
             } while (!menuExit);
+        }
+
+        public static void AddIssue()
+        {
+            bool menuExit = false;
+            string caseSwitch;
+            Console.Clear();
+            do
+            {
+                TextColorer.MenuHeader("HELPDESK SYSTEM (Bug Tracking)");
+                TextColorer.Notify("Choose Your action:");
+                TextColorer.MenuChoise("1 - Add Task");
+                TextColorer.MenuChoise("2 - Add Bug");
+                TextColorer.MenuChoise("3 - Add Technical Dept\n");
+                TextColorer.MenuChoise("r - Return to previose menu");
+
+                TextColorer.Alert(new String('_', 45));
+                TextColorer.Alert($"Total issues:{IssueBuilder.TotalIssuesQuantity}     ToDo Complexivity:{IssueBuilder.Complexity}\n");
+                TextColorer.Alert($"Tasks:{IssueBuilder.TaskIssuesQuantity}     Bugs:{IssueBuilder.BugIssuesQuantity}     " +
+                    $"Technical Depts:{IssueBuilder.TechnicalDeptsIssuesQuantity}\n");
+                TextColorer.Alert(new String('_', 45));
+
+                Console.Write(">>:");
+                caseSwitch = Console.ReadLine().ToLower();
+                switch (caseSwitch)
+                {
+                    case "1":
+                        Console.Clear();
+                        AddTask(Name(), Difficulty());
+                        menuExit = true;
+                        AddIssue();
+                        break;
+                    case "2":
+                        Console.Clear();
+                        AddBug(Name(), Difficulty());
+                        menuExit = true;
+                        AddIssue();
+                        break;
+                    case "3":
+                        Console.Clear();
+                        AddTechnicalDept(Name(), Difficulty());
+                        menuExit = true;
+                        AddIssue();
+                        break;
+                    case "r":
+                        menuExit = true;
+                        MainMenu();
+                        break;
+                    default:
+                        Console.Clear();
+                        menuExit = true;
+                        TextColorer.Alert("WHAT?! - Have You been reading menu, bastard?! ");
+                        Thread.Sleep(200);
+                        AddIssue();
+                        break;
+                }
+            } while (!menuExit);
+        }
+
+        private static void AddTask(string str, int num)
+        {
+            IssueBuilder.IssueTasksList.Add(new IssueTask(str, num, Issues.Issue.IssueTypes.task));
+        }
+
+        private static void AddBug(string str, int num)
+        {
+            IssueBuilder.IssueBugsList.Add(new IssueBug(str, num, Issues.Issue.IssueTypes.bug));
+        }
+
+        private static void AddTechnicalDept(string str, int num)
+        {
+            IssueBuilder.IssueTechnicalDeptsList.Add(new IssueTechnicalDept(str, num, Issues.Issue.IssueTypes.technicalDept));
+        }
+
+        private static string Name()
+        {
+            do
+            {
+                Console.Clear();
+                TextColorer.MenuChoise("Please, name of Task " +
+                    "(value must be not empty)");
+                Console.Write(">>:");
+                string name = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(name))
+                {
+                    return name;
+                }
+                else
+                {
+                    TextColorer.Alert("WHAT?! - Have You been reading menu, bastard?! ");
+                    Thread.Sleep(200);
+                }
+            } while (true);
+        }
+
+        private static int Difficulty()
+        {
+            do
+            {
+                Console.Clear();
+                TextColorer.MenuChoise($"Please, add difficulty of Issue " +
+                    $"(value must be in range [{IssueBuilder.DifficultyMin} - {IssueBuilder.DifficultyMax}])");
+                Console.Write(">>:");
+                if (int.TryParse(Convert.ToString(Console.ReadLine()), out int isInt) && 
+                    isInt >= IssueBuilder.DifficultyMin &&
+                    isInt <= IssueBuilder.DifficultyMax)
+                {
+                    return isInt;
+                }
+                else
+                {
+                    TextColorer.Alert("WHAT?! - Have You been reading menu, bastard?! ");
+                    Thread.Sleep(200);
+                }
+            } while (true);
         }
 
         private static int AddScrumLength()

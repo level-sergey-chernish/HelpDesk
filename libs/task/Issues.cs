@@ -47,7 +47,7 @@ namespace Issues
                 if (value < IssueBuilder.DifficultyMin || value > IssueBuilder.DifficultyMax)
                 {
                     throw new Exception($"Property TaskBuilder.Difficulty must " +
-                        $"be int in range [{IssueBuilder.DifficultyMin} - {IssueBuilder.DifficultyMax}!");
+                        $"be int in range [{IssueBuilder.DifficultyMin} - {IssueBuilder.DifficultyMax}]!");
                 }
                 _difficulty = value;
             }

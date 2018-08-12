@@ -91,7 +91,7 @@ namespace Issues
         /// </summary>
         public static int TechnicalDeptsIssuesQuantity
         {
-            get => IssueBugsCount();
+            get => IssueTechnicalDeptsCount();
         }
 
         /// <summary>
@@ -105,35 +105,17 @@ namespace Issues
 
         private static int IssueTasksCount()
         {
-            int totalIssues = 0;
-            for (var i = 0; i < IssueTasksList.Count; i++)
-            {
-                totalIssues += i;
-            }
-
-            return totalIssues;
+             return IssueTasksList.Count;
         }
 
         private static int IssueBugsCount()
         {
-            int totalIssues = 0;
-            for (var i = 0; i < IssueBugsList.Count; i++)
-            {
-                totalIssues += i;
-            }
-
-            return totalIssues;
+             return IssueBugsList.Count;
         }
 
         private static int IssueTechnicalDeptsCount()
         {
-            int totalIssues = 0;
-            for (var i = 0; i < IssueTechnicalDeptsList.Count; i++)
-            {
-                totalIssues += i;
-            }
-
-            return totalIssues;
+             return IssueTechnicalDeptsList.Count;
         }
 
         /// <summary>
