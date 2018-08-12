@@ -14,15 +14,15 @@ namespace Issues
         /// Eq. Scrum length. Can't be <= 0
         /// Default is 30
         /// </summary>
-        private static double _scrumLength = 30;
+        private static int _scrumLength = 30;
 
-        public static double ScrumLength
+        public static int ScrumLength
         {
             get => _scrumLength;
 
             set
             {
-                if (double.TryParse(Convert.ToString(value), out double isDouble) && 
+                if (int.TryParse(Convert.ToString(value), out int isInt) && 
                     value >= 1)
 
                 {
@@ -31,7 +31,7 @@ namespace Issues
                 else
                 {
                     throw new Exception("Property IssueBuilder.Complexity must be " +
-                        "double in range [1 - 1.7 × 10^308]!");
+                        "int in range [1 - 2,147,483,647]!");
                 }
             }
         }
@@ -69,7 +69,7 @@ namespace Issues
         /// <returns></returns>
         public static bool IsScrumPossible()
         {
-            if(Complexity > ScrumLength)
+            if(Complexity > Convert.ToDouble(ScrumLength))
             {
                 return false;
             }

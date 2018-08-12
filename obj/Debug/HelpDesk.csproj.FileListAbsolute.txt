@@ -8,3 +8,5 @@ D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\obj\Debug\HelpDesk.pdb
 D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\bin\Debug\task.dll
 D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\bin\Debug\task.pdb
 D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\obj\Debug\HelpDesk.csproj.CopyComplete
+D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\bin\Debug\UI.dll
+D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\bin\Debug\UI.pdb
