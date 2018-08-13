@@ -1,9 +1,0 @@
-D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\libs\ui\UI\bin\Debug\UI.dll
-D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\libs\ui\UI\bin\Debug\UI.pdb
-D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\libs\ui\UI\obj\Debug\UI.csproj.CoreCompileInputs.cache
-D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\libs\ui\UI\obj\Debug\UI.dll
-D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\libs\ui\UI\obj\Debug\UI.pdb
-D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\libs\ui\UI\bin\Debug\task.dll
-D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\libs\ui\UI\bin\Debug\task.pdb
-D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\libs\ui\UI\obj\Debug\UI.csproj.CopyComplete
-D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\libs\ui\UI\obj\Debug\UI.csprojAssemblyReference.cache
