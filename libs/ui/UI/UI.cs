@@ -48,7 +48,9 @@ namespace UI
                         menuExit = true;
                         break;
                     case "3":
-                        Console.Clear();
+                        Console.Clear(); //Some problems with activating this point of menu
+                        ShowIssues(IssueBuilder.IssueTasksList, IssueBuilder.IssueBugsList, 
+                            IssueBuilder.IssueTechnicalDeptsList);
                         menuExit = true;
                         break;
                     case "4":
@@ -57,9 +59,11 @@ namespace UI
                         menuExit = true;
                         MainMenu();
                         break;
-                    case "5":
+                    case "5": //same problems there
                         Console.Clear();
+                        IssueBuilder.DifficultyMax = AddDifRange();
                         menuExit = true;
+                        MainMenu();
                         break;
                     case "6":
                         Console.Clear();
@@ -216,6 +220,110 @@ namespace UI
                 }
             } while (true) ;
             
+        }
+
+
+        //Some problems with activating but it's almost done
+        private static void ShowIssues(List<IssueTask> IssueTasksList,
+            List<IssueBug> IssueBugsList, List<IssueTechnicalDept> IssueTechnicalDeptsList)
+        {
+                
+                if (IssueTasksList.Count == 0 && IssueBugsList.Count == 0
+                    && IssueTechnicalDeptsList.Count == 0)
+                {
+                    TextColorer.ListEmpty("There is no any Issues yet. You can back in main menu and add it!");
+                    Console.ReadLine();
+                }
+                else
+                {
+                    if (IssueTasksList.Count > 0)
+                    {
+                        for (int i = 0; i < IssueTasksList.Count; i++)
+                        {
+                            Console.WriteLine("============================");
+                            Console.WriteLine($"Name of task is {IssueTasksList[i].Name}");
+                            Console.WriteLine($"Difficulty of this task is {IssueTasksList[i].Difficulty}");
+                            Console.WriteLine("============================");
+                        }
+                    }
+                    else
+                    {
+                        TextColorer.ListEmpty("Looks like there is no Tasks yet");
+                    }
+                    if (IssueBugsList.Count > 0)
+                    {
+                        for (int i = 0; i < IssueBugsList.Count; i++)
+                        {
+                            Console.WriteLine("============================");
+                            Console.WriteLine($"Name of bug is {IssueBugsList[i].Name}");
+                            Console.WriteLine($"Difficulty of this bug is {IssueBugsList[i].Difficulty}");
+                            Console.WriteLine("============================");
+                        }
+                    }
+                    else
+                    {
+                        TextColorer.ListEmpty("Looks like there is no Bugs yet");
+                    }
+                    if (IssueTechnicalDeptsList.Count > 0)
+                    {
+                        for (int i = 0; i < IssueTechnicalDeptsList.Count; i++)
+                        {
+                            Console.WriteLine("============================");
+                            Console.WriteLine($"Name of technical Dept is {IssueTechnicalDeptsList[i].Name}");
+                            Console.WriteLine($"Difficulty of this Technical dept is {IssueTechnicalDeptsList[i].Difficulty}");
+                            Console.WriteLine("============================");
+                        }
+                    }
+                    else
+                    {
+                        TextColorer.ListEmpty("Looks like there is no Technical Depts yet");
+
+                    }
+                }
+            Console.WriteLine("To go back to main menu Insert [r]");               
+            string switching =  Console.ReadLine()?.ToLower();
+            bool menuExit = false;
+            do
+            {
+                switch (switching)
+                {
+                    case "r":
+                        menuExit = true;
+                        MainMenu();
+                        break;
+                    default:
+                        menuExit = true;
+                        TextColorer.Alert("WHAT?! - Have You been reading menu, bastard?! ");
+                        Thread.Sleep(200);
+                        ShowIssues(IssueBuilder.IssueTasksList, IssueBuilder.IssueBugsList,
+                                IssueBuilder.IssueTechnicalDeptsList);
+                        break;
+
+                }
+            } while (!menuExit);
+        }
+
+        private static int AddDifRange()
+        {
+            string difficultyMax;
+            do
+            {
+                Console.Clear();
+                TextColorer.MenuChoise("Please, input value of Difficulty Range " +
+                    "(value must be int and be in range [1 - 2,147,483,647])");
+                Console.Write(">>:");
+                difficultyMax = Console.ReadLine();
+                if (int.TryParse(Convert.ToString(difficultyMax), out int isInt) && isInt >= 1)
+
+                {
+                    return isInt;
+                }
+                else
+                {
+                    TextColorer.Alert("WHAT?! - Have You been reading menu, bastard?! ");
+                    Thread.Sleep(200);
+                }
+            } while (true);
         }
     }
 }

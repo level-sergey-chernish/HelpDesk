@@ -10,3 +10,15 @@ D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\bin\Debug\task.pdb
 D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\obj\Debug\HelpDesk.csproj.CopyComplete
 D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\bin\Debug\UI.dll
 D:\Documents\A-Level\Module02\13.HelpDesk\HelpDesk\bin\Debug\UI.pdb
+C:\Users\user\source\repos\ClassTask\UI\HelpDesk\bin\Debug\HelpDesk.exe.config
+C:\Users\user\source\repos\ClassTask\UI\HelpDesk\bin\Debug\HelpDesk.exe
+C:\Users\user\source\repos\ClassTask\UI\HelpDesk\bin\Debug\HelpDesk.pdb
+C:\Users\user\source\repos\ClassTask\UI\HelpDesk\bin\Debug\task.dll
+C:\Users\user\source\repos\ClassTask\UI\HelpDesk\bin\Debug\UI.dll
+C:\Users\user\source\repos\ClassTask\UI\HelpDesk\bin\Debug\task.pdb
+C:\Users\user\source\repos\ClassTask\UI\HelpDesk\bin\Debug\UI.pdb
+C:\Users\user\source\repos\ClassTask\UI\HelpDesk\obj\Debug\HelpDesk.csprojAssemblyReference.cache
+C:\Users\user\source\repos\ClassTask\UI\HelpDesk\obj\Debug\HelpDesk.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\ClassTask\UI\HelpDesk\obj\Debug\HelpDesk.csproj.CopyComplete
+C:\Users\user\source\repos\ClassTask\UI\HelpDesk\obj\Debug\HelpDesk.exe
+C:\Users\user\source\repos\ClassTask\UI\HelpDesk\obj\Debug\HelpDesk.pdb
