@@ -37,5 +37,11 @@ namespace UI
             Console.ForegroundColor = ConsoleColor.Gray;
         }
 
+        internal static void ListEmpty(string str)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(str);
+            Console.ForegroundColor = ConsoleColor.Gray;
+        }
     }
 }

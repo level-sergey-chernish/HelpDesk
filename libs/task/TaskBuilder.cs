@@ -170,8 +170,6 @@ namespace Issues
             return closedIssues;
         }
 
-        int k = Issues.Sever
-
         /// <summary>
         /// Check if scrum possible. If overall severities
         /// (Complexity) > Scrum length - return negative
