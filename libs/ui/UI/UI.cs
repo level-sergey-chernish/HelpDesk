@@ -98,7 +98,7 @@ namespace UI
                 TextColorer.MenuChoise("1 - Add Task");
                 TextColorer.MenuChoise("2 - Add Bug");
                 TextColorer.MenuChoise("3 - Add Technical Dept\n");
-                TextColorer.MenuChoise("r - Return to previose menu");
+                TextColorer.MenuChoise("r - Return to previous menu");
 
                 TextColorer.Alert(new String('_', 45));
                 TextColorer.Alert($"Total issues:{IssueBuilder.TotalIssuesQuantity}     ToDo Complexivity:{IssueBuilder.Complexity}\n");

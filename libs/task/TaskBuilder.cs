@@ -290,7 +290,5 @@ namespace Issues
         {
             return new IssueTechnicalDept(issueName, issueDifficulty, issueType);
         }
-
-
     }
 }

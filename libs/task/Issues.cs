@@ -113,6 +113,5 @@ namespace Issues
             Difficulty = issueDifficulty;
             IssueType = issueType;
         }
-
     }
 }
