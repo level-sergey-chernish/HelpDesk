@@ -272,7 +272,7 @@ namespace UI
                 }
                 else
                 {
-                    TextColorer.ListEmpty("Looks like there is no Tasks yet");
+                    TextColorer.ListEmpty("Looks like there are no Tasks yet");
                 }
                 if (IssueBuilder.IssueBugsList.Count > 0)
                 {
@@ -286,7 +286,7 @@ namespace UI
                 }
                 else
                 {
-                    TextColorer.ListEmpty("Looks like there is no Bugs yet");
+                    TextColorer.ListEmpty("Looks like there are no Bugs yet");
                 }
                 if (IssueBuilder.IssueTechnicalDeptsList.Count > 0)
                 {
@@ -295,16 +295,16 @@ namespace UI
                         TextColorer.Notify(new String('=', 35));
                         Console.WriteLine($"Name of technical Dept is {IssueBuilder.IssueTechnicalDeptsList[i].Name}");
                         Console.WriteLine($"Difficulty of this Technical dept is {IssueBuilder.IssueTechnicalDeptsList[i].Difficulty}");
-                        Console.WriteLine("============================");
+                        Console.WriteLine(new String('=', 35));
                     }
                 }
                 else
                 {
-                    TextColorer.ListEmpty("Looks like there is no Technical Depts yet");
+                    TextColorer.ListEmpty("Looks like there are no Technical Depts yet");
 
                 }
             }
-            TextColorer.Notify("r - Return to previouse menu");
+            TextColorer.Notify("r - Return to previous menu");
             string switching = Console.ReadLine()?.ToLower();
             bool menuExit = false;
             do

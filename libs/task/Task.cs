@@ -22,7 +22,5 @@ namespace Issues
         {
             return Difficulty * Priority - Convert.ToDouble(ScrumInteration);
         }
-    }
-
-            
+    }      
 }

@@ -90,7 +90,6 @@ namespace Issues
             {
                 return true;
             }
-
             return false;
         }
 
