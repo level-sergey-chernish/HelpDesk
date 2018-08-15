@@ -48,6 +48,7 @@ namespace UI
                         break;
                     case "2":
                         Console.Clear();
+                        DeleteIssues();
                         menuExit = true;
                         break;
                     case "3":
@@ -292,7 +293,7 @@ namespace UI
                 {
                     for (int i = 0; i < IssueBuilder.IssueTechnicalDeptsList.Count; i++)
                     {
-                        TextColorer.Notify(new String('=', 35));
+                        Console.WriteLine(new String('=', 35));
                         Console.WriteLine($"Name of technical Dept is {IssueBuilder.IssueTechnicalDeptsList[i].Name}");
                         Console.WriteLine($"Difficulty of this Technical dept is {IssueBuilder.IssueTechnicalDeptsList[i].Difficulty}");
                         Console.WriteLine(new String('=', 35));
@@ -324,6 +325,11 @@ namespace UI
 
                 }
             } while (!menuExit);
+        }
+
+        private static void DeleteIssues ()
+        {
+
         }
     }
 }
