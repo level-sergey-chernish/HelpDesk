@@ -65,7 +65,8 @@ namespace UI
                         break;
                     case "5":
                         Console.Clear();
-                        IssueBuilder.DifficultyMax = AddDifRange();
+                        IssueBuilder.DifficultyMax = ChangeDifMax();
+                        IssueBuilder.DifficultyMin = ChangeDifMin();
                         menuExit = true;
                         MainMenu();
                         break;
@@ -226,17 +227,43 @@ namespace UI
             
         }
 
-        private static int AddDifRange()
+        private static int ChangeDifMax()
         {
             string difficultyMax;
             do
             {
                 Console.Clear();
-                TextColorer.MenuChoise("Please, input value of Difficulty Range " +
-                    "(value must be int and be in range [1 - 2,147,483,647])");
+                TextColorer.MenuChoise("Please, input value of Maximum" +
+                    "(value must be int and be in range [1 - 2,147,483,647]) \n" +
+                    $"And bigger than {IssueBuilder.DifficultyMin}");
                 Console.Write(">>:");
                 difficultyMax = Console.ReadLine();
-                if (int.TryParse(Convert.ToString(difficultyMax), out int isInt) && isInt >= 1)
+                if (int.TryParse(Convert.ToString(difficultyMax), out int isInt) && isInt >= 1
+                    && isInt > IssueBuilder.DifficultyMin)
+
+                {
+                    return isInt;
+                }
+                else
+                {
+                    TextColorer.Alert("WHAT?! - Have You been reading menu, bastard?! ");
+                    Thread.Sleep(200);
+                }
+            } while (true);
+        }
+        private static int ChangeDifMin()
+        {
+            string difficultyMin;
+            do
+            {
+                Console.Clear();
+                TextColorer.MenuChoise("Please, input value of Minimum" +
+                    "(value must be int and be in range [1 - 2,147,483,647] \n)" +
+                    $"And lower than {IssueBuilder.DifficultyMax}");
+                Console.Write(">>:");
+                difficultyMin = Console.ReadLine();
+                if (int.TryParse(Convert.ToString(difficultyMin), out int isInt) && isInt >= 1
+                    && isInt < IssueBuilder.DifficultyMax)
 
                 {
                     return isInt;
@@ -251,11 +278,11 @@ namespace UI
 
         private static void ShowIssues()
         {
-            if ( IssueBuilder.IssueTasksList.Count == 0 && IssueBuilder.IssueBugsList.Count == 0
-                && IssueBuilder.IssueTechnicalDeptsList.Count == 0 )
+            if (IssueBuilder.IssueTasksList.Count == 0 && IssueBuilder.IssueBugsList.Count == 0
+                && IssueBuilder.IssueTechnicalDeptsList.Count == 0)
             {
+                Console.Clear();
                 TextColorer.ListEmpty("There is no any Issues yet. You can back in main menu and add it!");
-                Console.ReadLine();
             }
             else
             {
@@ -263,49 +290,54 @@ namespace UI
                 {
                     for (int i = 0; i < IssueBuilder.IssueTasksList.Count; i++)
                     {
-                        Console.WriteLine(new String('=', 35));
+                        TextColorer.Notify(new String('=', 35));
                         Console.WriteLine();
-                        Console.WriteLine($"Name of task is {IssueBuilder.IssueTasksList[i].Name}");
-                        Console.WriteLine($"Difficulty of this task is {IssueBuilder.IssueTasksList[i].Difficulty}");
+                        TextColorer.Notify($"Name of task is {IssueBuilder.IssueTasksList[i].Name}");
+                        TextColorer.Notify($"Difficulty of this task is {IssueBuilder.IssueTasksList[i].Difficulty}");
                         Console.WriteLine();
-                        Console.WriteLine(new String('=', 35));
+                        TextColorer.Notify(new String('=', 35));
                     }
                 }
                 else
                 {
-                    TextColorer.ListEmpty("Looks like there are no Tasks yet");
+                    TextColorer.ListEmpty("Looks like there is no Tasks yet");
                 }
                 if (IssueBuilder.IssueBugsList.Count > 0)
                 {
                     for (int i = 0; i < IssueBuilder.IssueBugsList.Count; i++)
                     {
-                        Console.WriteLine(new String('=', 35));
-                        Console.WriteLine($"Name of bug is {IssueBuilder.IssueBugsList[i].Name}");
-                        Console.WriteLine($"Difficulty of this bug is {IssueBuilder.IssueBugsList[i].Difficulty}");
-                        Console.WriteLine(new String('=', 35));
+                        TextColorer.Notify(new String('=', 35));
+                        Console.WriteLine();
+                        TextColorer.Notify($"Name of bug is {IssueBuilder.IssueBugsList[i].Name}");
+                        TextColorer.Notify($"Difficulty of this bug is {IssueBuilder.IssueBugsList[i].Difficulty}");
+                        Console.WriteLine();
+                        TextColorer.Notify(new String('=', 35));
                     }
                 }
                 else
                 {
-                    TextColorer.ListEmpty("Looks like there are no Bugs yet");
+                    TextColorer.ListEmpty("Looks like there is no Bugs yet");
                 }
                 if (IssueBuilder.IssueTechnicalDeptsList.Count > 0)
                 {
                     for (int i = 0; i < IssueBuilder.IssueTechnicalDeptsList.Count; i++)
                     {
-                        Console.WriteLine(new String('=', 35));
-                        Console.WriteLine($"Name of technical Dept is {IssueBuilder.IssueTechnicalDeptsList[i].Name}");
-                        Console.WriteLine($"Difficulty of this Technical dept is {IssueBuilder.IssueTechnicalDeptsList[i].Difficulty}");
-                        Console.WriteLine(new String('=', 35));
+                        TextColorer.Notify(new String('=', 35));
+                        Console.WriteLine();
+                        TextColorer.Notify($"Name of technical Dept is {IssueBuilder.IssueTechnicalDeptsList[i].Name}");
+                        TextColorer.Notify($"Difficulty of this Technical dept is {IssueBuilder.IssueTechnicalDeptsList[i].Difficulty}");
+                        Console.WriteLine();
+                        TextColorer.Notify(new String('=', 35));
                     }
                 }
                 else
                 {
-                    TextColorer.ListEmpty("Looks like there are no Technical Depts yet");
+                    TextColorer.ListEmpty("Looks like there is no Technical Depts yet");
 
                 }
             }
-            TextColorer.Notify("r - Return to previous menu");
+            Console.WriteLine();
+            TextColorer.MenuChoise("r - Return to previouse menu");
             string switching = Console.ReadLine()?.ToLower();
             bool menuExit = false;
             do
