@@ -45,7 +45,7 @@ namespace Issues
         }
 
         private static double ComplexityCalc()
-        {
+        {   
             double complexity = 0;
             for (var i = 0; i < IssueTasksList.Count; i++)
             {
@@ -59,7 +59,14 @@ namespace Issues
             {
                 complexity += IssueTechnicalDeptsList.ElementAt(i).Severity;
             }
-            return complexity;
+            if (complexity < 0)
+            {
+                return complexity = 0;
+            }
+            else
+            {
+                return complexity;
+            }
         }
 
         /// <summary>
@@ -290,5 +297,6 @@ namespace Issues
         {
             return new IssueTechnicalDept(issueName, issueDifficulty, issueType);
         }
+
     }
 }

@@ -72,7 +72,9 @@ namespace UI
                         break;
                     case "6":
                         Console.Clear();
+                        StartScrum();
                         menuExit = true;
+                        MainMenu();
                         break;
                     case "q":
                         menuExit = true;
@@ -278,6 +280,7 @@ namespace UI
 
         private static void ShowIssues()
         {
+            Console.Clear();
             if (IssueBuilder.IssueTasksList.Count == 0 && IssueBuilder.IssueBugsList.Count == 0
                 && IssueBuilder.IssueTechnicalDeptsList.Count == 0)
             {
@@ -358,6 +361,71 @@ namespace UI
                 }
             } while (!menuExit);
         }
+
+        public static void StartScrum()
+        {   if (IssueBuilder.Complexity < IssueBuilder.ScrumLength)
+            {
+                for (int i = 0; i < IssueBuilder.ScrumLength; i++)
+                {                   
+                    if (!IssueBuilder.ScrumCycleDeffect())
+                    {
+                        Console.Clear();
+                        TextColorer.Notify("Your Issues is resolving now...");
+                        if (IssueBuilder.IssueTasksList.Count > 0)
+                        {
+                            for (int j = 0; j < IssueBuilder.IssueTasksList.Count; j++)
+                            {
+                                if (IssueBuilder.IssueTasksList[j].IssueStatus == false)
+                                {
+                                    TextColorer.Notify("Your Task is resolving now...");
+                                    IssueBuilder.IssueTasksList[j].ScrumInteration++;
+                                }
+                            }
+                        }
+                        if (IssueBuilder.IssueBugsList.Count > 0)
+                        {
+                            for (int j = 0; j < IssueBuilder.IssueBugsList.Count; j++)
+                            {
+                                if (IssueBuilder.IssueBugsList[j].IssueStatus == false)
+                                {
+                                    TextColorer.Notify("Your Bugs is resolving now...");
+                                    IssueBuilder.IssueBugsList[j].ScrumInteration++;
+                                }
+                            }
+                        }
+                        if (IssueBuilder.IssueTechnicalDeptsList.Count > 0)
+                        {
+                            for (int j = 0; j < IssueBuilder.IssueTechnicalDeptsList.Count; j++)
+                            {
+                                if (IssueBuilder.IssueTechnicalDeptsList[j].IssueStatus == false)
+                                {
+                                    TextColorer.Notify("Your Techs is resolving now...");
+                                    IssueBuilder.IssueTechnicalDeptsList[j].ScrumInteration++;
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+            else
+            {
+                TextColorer.Notify($"Sorry, there is too much tasks. \nProgram can't resolve it for {IssueBuilder.ScrumLength} itterations");
+                TextColorer.Notify("You can change scrum duration or delete some issues in main menu");
+                TextColorer.Notify("Insert any key to go back in main menu");
+                Console.ReadLine();
+            }
+        }
+
+
+
+
+
+
+
+
+
+
 
         private static void DeleteIssues ()
         {
