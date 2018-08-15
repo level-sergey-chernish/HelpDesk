@@ -417,19 +417,157 @@ namespace UI
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-        private static void DeleteIssues ()
+        private static void DeleteIssues()
         {
+            if (IssueBuilder.IssueBugsList.Count == 0 && IssueBuilder.IssueTasksList.Count == 0 &&
+                IssueBuilder.IssueTechnicalDeptsList.Count == 0)
+            {
+                Console.WriteLine("There is nothing to delete. Go back to main menu.");
+            }
+            else
+            {
+                Console.WriteLine(new String('=', 40));
+                TextColorer.MenuChoise($"What kind of issues do you want to delete?\n\n" +
+                    $"To delete some Task press \"1\"\n" +
+                    $"To delete some Bug press \"2\"\n" +
+                    $"To delete some Technical Dept press \"3\"");
+                Console.WriteLine(new String('=', 40));
+                TextColorer.Notify("r - Return to previous menu");
 
+                string choise = Console.ReadLine();
+                bool mainMenu = false;
+
+                while (!mainMenu)
+                {
+                    switch (choise)
+                    {
+                        case "1":
+                            mainMenu = true;
+                            ShowAllTasksAndDeleteByNumber();
+                            DeleteIssues();
+                            break;
+                        case "2":
+                            mainMenu = true;
+                            ShowAllBugsAndDeleteByNumber();
+                            DeleteIssues();
+                            break;
+                        case "3":
+                            mainMenu = true;
+                            ShowAllTechnicalDeptsAndDeleteByNumber();
+                            DeleteIssues();
+                            break;
+                        case "r":
+                            mainMenu = true;
+                            MainMenu();
+                            break;
+                        default:
+                            TextColorer.Alert("Invalid enter. Please take a look on program's hints");
+                            Thread.Sleep(200);
+                            break;
+                    }
+                }
+            }
+        }
+
+        private static void ShowAllTasksAndDeleteByNumber()
+        {
+            Console.Clear();
+            Console.WriteLine(new String('=', 40));
+            for (int i = 0; i < IssueBuilder.IssueTasksList.Count; i++)
+            {
+                Console.WriteLine($"Task {IssueBuilder.IssueTasksList[i].Name} with number {i}");
+            }
+            Console.WriteLine(new String('=', 40));
+
+            bool validEnter = false;
+            int numberOfTask = -1;
+
+            while (!validEnter && IssueBuilder.IssueTasksList.Count != 0)
+            {
+                TextColorer.MenuChoise("Please enter the number of task to delete");
+                if (Int32.TryParse(Console.ReadLine(), out int value) && value >= 0 && value < IssueBuilder.IssueTasksList.Count)
+                {
+                    numberOfTask = value;
+                    validEnter = true;
+                }
+            }
+
+            if (numberOfTask >= 0)
+            {
+                IssueBuilder.IssueTasksList.RemoveAt(numberOfTask);
+                Console.WriteLine("Task has been successfully deleted!");
+                Thread.Sleep(300);
+                Console.Clear();
+            }
+        }
+
+        private static void ShowAllBugsAndDeleteByNumber()
+        {
+            Console.Clear();
+            Console.WriteLine(new String('=', 40));
+            for (int i = 0; i < IssueBuilder.IssueBugsList.Count; i++)
+            {
+                Console.WriteLine($"Task {IssueBuilder.IssueBugsList[i].Name} with number {i}");
+            }
+            Console.WriteLine(new String('=', 40));
+
+            bool validEnter = false;
+            int numberOfTask = -1;
+
+            while (!validEnter && IssueBuilder.IssueBugsList.Count != 0)
+            {
+                TextColorer.MenuChoise("Please enter the number of bug to delete");
+                if (Int32.TryParse(Console.ReadLine(), out int value) && value >= 0 && value < IssueBuilder.IssueBugsList.Count)
+                {
+                    numberOfTask = value;
+                    validEnter = true;
+                }
+                else
+                {
+                    TextColorer.Alert("WHAT?! - Have You been reading menu, bastard?! ");
+                    Thread.Sleep(200);
+                }
+            }
+
+            if (numberOfTask >= 0)
+            {
+                IssueBuilder.IssueBugsList.RemoveAt(numberOfTask);
+                Console.WriteLine("Task has been successfully deleted!");
+                Thread.Sleep(300);
+                Console.Clear();
+            }
+        }
+
+        private static void ShowAllTechnicalDeptsAndDeleteByNumber()
+        {
+            Console.Clear();
+            Console.WriteLine(new String('=', 40));
+            for (int i = 0; i < IssueBuilder.IssueTechnicalDeptsList.Count; i++)
+            {
+                Console.WriteLine($"Task {IssueBuilder.IssueTechnicalDeptsList[i].Name} with number {i}");
+            }
+            Console.WriteLine(new String('=', 40));
+
+            bool validEnter = false;
+            int numberOfTask = -1;
+
+            while (!validEnter && IssueBuilder.IssueTechnicalDeptsList.Count != 0)
+            {
+                TextColorer.MenuChoise("Please enter the number of technical dept to delete");
+                if (Int32.TryParse(Console.ReadLine(), out int value) && value >= 0 && value < IssueBuilder.IssueTechnicalDeptsList.Count)
+                {
+                    numberOfTask = value;
+                    validEnter = true;
+                }
+            }
+
+            if (numberOfTask >= 0)
+            {
+                IssueBuilder.IssueTechnicalDeptsList.RemoveAt(numberOfTask);
+                Console.WriteLine("Task has been successfully deleted!");
+                Thread.Sleep(300);
+                Console.Clear();
+            }
         }
     }
 }
