@@ -423,6 +423,8 @@ namespace UI
                 IssueBuilder.IssueTechnicalDeptsList.Count == 0)
             {
                 Console.WriteLine("There is nothing to delete. Go back to main menu.");
+                Thread.Sleep(500);
+                MainMenu();
             }
             else
             {
@@ -463,6 +465,7 @@ namespace UI
                         default:
                             TextColorer.Alert("Invalid enter. Please take a look on program's hints");
                             Thread.Sleep(200);
+                            DeleteIssues();
                             break;
                     }
                 }
@@ -473,9 +476,16 @@ namespace UI
         {
             Console.Clear();
             Console.WriteLine(new String('=', 40));
-            for (int i = 0; i < IssueBuilder.IssueTasksList.Count; i++)
+            if (IssueBuilder.IssueTasksList.Count == 0)
             {
-                Console.WriteLine($"Task {IssueBuilder.IssueTasksList[i].Name} with number {i}");
+                TextColorer.Notify("There is no task to delete");
+            }
+            else
+            {
+                for (int i = 0; i < IssueBuilder.IssueTasksList.Count; i++)
+                {
+                    Console.WriteLine($"Task {IssueBuilder.IssueTasksList[i].Name} with number {i}");
+                }
             }
             Console.WriteLine(new String('=', 40));
 
@@ -489,15 +499,16 @@ namespace UI
                 {
                     numberOfTask = value;
                     validEnter = true;
+                    IssueBuilder.IssueTasksList.RemoveAt(numberOfTask);
+                    Console.WriteLine("Task has been successfully deleted!");
+                    Thread.Sleep(600);
+                    Console.Clear();
                 }
-            }
-
-            if (numberOfTask >= 0)
-            {
-                IssueBuilder.IssueTasksList.RemoveAt(numberOfTask);
-                Console.WriteLine("Task has been successfully deleted!");
-                Thread.Sleep(300);
-                Console.Clear();
+                else
+                {
+                    TextColorer.Alert("Invalid input!");
+                    Thread.Sleep(600);
+                }
             }
         }
 
@@ -521,20 +532,16 @@ namespace UI
                 {
                     numberOfTask = value;
                     validEnter = true;
+                    IssueBuilder.IssueBugsList.RemoveAt(numberOfTask);
+                    Console.WriteLine("Task has been successfully deleted!");
+                    Thread.Sleep(600);
+                    Console.Clear();
                 }
                 else
                 {
-                    TextColorer.Alert("WHAT?! - Have You been reading menu, bastard?! ");
-                    Thread.Sleep(200);
+                    TextColorer.Alert("Invalid input!");
+                    Thread.Sleep(600);
                 }
-            }
-
-            if (numberOfTask >= 0)
-            {
-                IssueBuilder.IssueBugsList.RemoveAt(numberOfTask);
-                Console.WriteLine("Task has been successfully deleted!");
-                Thread.Sleep(300);
-                Console.Clear();
             }
         }
 
@@ -558,15 +565,16 @@ namespace UI
                 {
                     numberOfTask = value;
                     validEnter = true;
+                    IssueBuilder.IssueTechnicalDeptsList.RemoveAt(numberOfTask);
+                    Console.WriteLine("Task has been successfully deleted!");
+                    Thread.Sleep(300);
+                    Console.Clear();
                 }
-            }
-
-            if (numberOfTask >= 0)
-            {
-                IssueBuilder.IssueTechnicalDeptsList.RemoveAt(numberOfTask);
-                Console.WriteLine("Task has been successfully deleted!");
-                Thread.Sleep(300);
-                Console.Clear();
+                else
+                {
+                    TextColorer.Alert("Invalid input!");
+                    Thread.Sleep(600);
+                }
             }
         }
     }
