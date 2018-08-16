@@ -54,6 +54,7 @@ namespace UI
                     case "3":
                         Console.Clear();
                         ShowIssues();
+                        Return();
                         menuExit = true;
                         MainMenu();
                         break;
@@ -297,6 +298,10 @@ namespace UI
                         Console.WriteLine();
                         TextColorer.Notify($"Name of task is {IssueBuilder.IssueTasksList[i].Name}");
                         TextColorer.Notify($"Difficulty of this task is {IssueBuilder.IssueTasksList[i].Difficulty}");
+                        if (IssueBuilder.IssueBugsList[i].IssueStatus == true)
+                        {
+                            TextColorer.Notify("This Task is already resolved!");
+                        }
                         Console.WriteLine();
                         TextColorer.Notify(new String('=', 35));
                     }
@@ -313,6 +318,10 @@ namespace UI
                         Console.WriteLine();
                         TextColorer.Notify($"Name of bug is {IssueBuilder.IssueBugsList[i].Name}");
                         TextColorer.Notify($"Difficulty of this bug is {IssueBuilder.IssueBugsList[i].Difficulty}");
+                        if (IssueBuilder.IssueBugsList[i].IssueStatus == true)
+                        {
+                            TextColorer.Notify("This Bug is already resolved!");
+                        }
                         Console.WriteLine();
                         TextColorer.Notify(new String('=', 35));
                     }
@@ -329,6 +338,10 @@ namespace UI
                         Console.WriteLine();
                         TextColorer.Notify($"Name of technical Dept is {IssueBuilder.IssueTechnicalDeptsList[i].Name}");
                         TextColorer.Notify($"Difficulty of this Technical dept is {IssueBuilder.IssueTechnicalDeptsList[i].Difficulty}");
+                        if(IssueBuilder.IssueTechnicalDeptsList[i].IssueStatus == true)
+                        {
+                            TextColorer.Notify("This Technical Dept is already resolved!");
+                        }
                         Console.WriteLine();
                         TextColorer.Notify(new String('=', 35));
                     }
@@ -339,6 +352,9 @@ namespace UI
 
                 }
             }
+        }   
+            private static void Return()
+        { 
             Console.WriteLine();
             TextColorer.MenuChoise("r - Return to previouse menu");
             string switching = Console.ReadLine()?.ToLower();
@@ -423,11 +439,12 @@ namespace UI
                 IssueBuilder.IssueTechnicalDeptsList.Count == 0)
             {
                 Console.WriteLine("There is nothing to delete. Go back to main menu.");
-                Thread.Sleep(500);
+                Thread.Sleep(1000);
                 MainMenu();
             }
             else
             {
+                ShowIssues();
                 Console.WriteLine(new String('=', 40));
                 TextColorer.MenuChoise($"What kind of issues do you want to delete?\n\n" +
                     $"To delete some Task press \"1\"\n" +
@@ -463,6 +480,7 @@ namespace UI
                             MainMenu();
                             break;
                         default:
+                            Console.Clear();
                             TextColorer.Alert("Invalid enter. Please take a look on program's hints");
                             Thread.Sleep(200);
                             DeleteIssues();
@@ -484,10 +502,12 @@ namespace UI
             {
                 for (int i = 0; i < IssueBuilder.IssueTasksList.Count; i++)
                 {
-                    Console.WriteLine($"Task {IssueBuilder.IssueTasksList[i].Name} with number {i}");
+                    TextColorer.Notify($"Task {IssueBuilder.IssueTasksList[i].Name} with number {i}");
+                    Console.WriteLine();
                 }
             }
-            Console.WriteLine(new String('=', 40));
+            Console.WriteLine();
+            TextColorer.Notify(new String('=', 40));
 
             bool validEnter = false;
             int numberOfTask = -1;
@@ -515,12 +535,14 @@ namespace UI
         private static void ShowAllBugsAndDeleteByNumber()
         {
             Console.Clear();
-            Console.WriteLine(new String('=', 40));
+            TextColorer.Notify(new String('=', 40));
             for (int i = 0; i < IssueBuilder.IssueBugsList.Count; i++)
             {
-                Console.WriteLine($"Task {IssueBuilder.IssueBugsList[i].Name} with number {i}");
+                TextColorer.Notify($"Task {IssueBuilder.IssueBugsList[i].Name} with number {i}");
+                Console.WriteLine();
             }
-            Console.WriteLine(new String('=', 40));
+
+            TextColorer.Notify(new String('=', 40));
 
             bool validEnter = false;
             int numberOfTask = -1;
@@ -548,12 +570,13 @@ namespace UI
         private static void ShowAllTechnicalDeptsAndDeleteByNumber()
         {
             Console.Clear();
-            Console.WriteLine(new String('=', 40));
+            TextColorer.Notify(new String('=', 40));
             for (int i = 0; i < IssueBuilder.IssueTechnicalDeptsList.Count; i++)
             {
-                Console.WriteLine($"Task {IssueBuilder.IssueTechnicalDeptsList[i].Name} with number {i}");
+                TextColorer.Notify($"Task {IssueBuilder.IssueTechnicalDeptsList[i].Name} with number {i}");
+                Console.WriteLine();
             }
-            Console.WriteLine(new String('=', 40));
+            TextColorer.Notify(new String('=', 40));
 
             bool validEnter = false;
             int numberOfTask = -1;
