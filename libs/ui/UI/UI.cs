@@ -50,6 +50,7 @@ namespace UI
                         Console.Clear();
                         DeleteIssues();
                         menuExit = true;
+                        MainMenu();
                         break;
                     case "3":
                         Console.Clear();
