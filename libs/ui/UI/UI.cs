@@ -50,7 +50,6 @@ namespace UI
                         Console.Clear();
                         DeleteIssues();
                         menuExit = true;
-                        MainMenu();
                         break;
                     case "3":
                         Console.Clear();
@@ -431,12 +430,10 @@ namespace UI
             {
                 TextColorer.MenuHeader("HELPDESK SYSTEM (Bug Tracking)");
                 TextColorer.Notify("Choose Your action:");
-                Console.WriteLine(new String('_', 40));
                 TextColorer.MenuChoise($"What kind of issues do you want to delete?\n\n" +
-                    $"To delete some Task press \"1\"\n" +
-                    $"To delete some Bug press \"2\"\n" +
-                    $"To delete some Technical Dept press \"3\"");
-                Console.WriteLine(new String('_', 40));
+                    $"1 - delete some Task\n" +
+                    $"2 - delete some Bug\n" +
+                    $"3 - delete some Technical Dept\n");
                 TextColorer.Notify("r - Return to previous menu");
                 TextColorer.Alert(new String('_', 45));
                 TextColorer.Alert($"Total issues:{IssueBuilder.TotalIssuesQuantity}     ToDo Complexivity:{IssueBuilder.Complexity}\n");
@@ -455,17 +452,17 @@ namespace UI
                     {
                         case "1":
                             mainMenu = true;
-                            ShowAllTasksAndDeleteByNumber();
+                            ShowAllTasksAndDeleteTask();
                             DeleteIssues();
                             break;
                         case "2":
                             mainMenu = true;
-                            ShowAllBugsAndDeleteByNumber();
+                            ShowAllBugsAndDeleteBug();
                             DeleteIssues();
                             break;
                         case "3":
                             mainMenu = true;
-                            ShowAllTechnicalDeptsAndDeleteByNumber();
+                            ShowAllTechnicalDeptsAndDeleteTechDept();
                             DeleteIssues();
                             break;
                         case "r":
@@ -475,6 +472,8 @@ namespace UI
                         default:
                             TextColorer.Alert("Invalid enter. Please take a look on program's hints");
                             Thread.Sleep(200);
+                            Console.Clear();
+                            mainMenu = true;
                             DeleteIssues();
                             break;
                     }
@@ -482,7 +481,7 @@ namespace UI
             }
         }
 
-        private static void ShowAllTasksAndDeleteByNumber()
+        private static void ShowAllTasksAndDeleteTask()
         {
             Console.Clear();
             Console.WriteLine(new String('=', 40));
@@ -500,12 +499,12 @@ namespace UI
             Console.WriteLine(new String('=', 40));
 
             bool validEnter = false;
-            int numberOfTask = -1;
+            int numberOfTask;
 
             while (!validEnter && IssueBuilder.IssueTasksList.Count != 0)
             {
                 TextColorer.MenuChoise("Please enter the number of task to delete");
-                if (Int32.TryParse(Console.ReadLine(), out int value) && value >= 0 && value < IssueBuilder.IssueTasksList.Count)
+                if (Int32.TryParse(Console.ReadLine(), out int value) && value > 0 && value <= IssueBuilder.IssueTasksList.Count)
                 {
                     numberOfTask = value-1;
                     validEnter = true;
@@ -517,12 +516,13 @@ namespace UI
                 else
                 {
                     TextColorer.Alert("Invalid input!");
-                    Thread.Sleep(600);
+                    Thread.Sleep(400);
+                    
                 }
             }
         }
 
-        private static void ShowAllBugsAndDeleteByNumber()
+        private static void ShowAllBugsAndDeleteBug()
         {
             Console.Clear();
             Console.WriteLine(new String('=', 40));
@@ -533,12 +533,12 @@ namespace UI
             Console.WriteLine(new String('=', 40));
 
             bool validEnter = false;
-            int numberOfTask = -1;
+            int numberOfTask;
 
             while (!validEnter && IssueBuilder.IssueBugsList.Count != 0)
             {
                 TextColorer.MenuChoise("Please enter the number of bug to delete");
-                if (Int32.TryParse(Console.ReadLine(), out int value) && value >= 0 && value < IssueBuilder.IssueBugsList.Count)
+                if (Int32.TryParse(Console.ReadLine(), out int value) && value > 0 && value <= IssueBuilder.IssueBugsList.Count)
                 {
                     numberOfTask = value-1;
                     validEnter = true;
@@ -550,12 +550,12 @@ namespace UI
                 else
                 {
                     TextColorer.Alert("Invalid input!");
-                    Thread.Sleep(600);
+                    Thread.Sleep(400);
                 }
             }
         }
 
-        private static void ShowAllTechnicalDeptsAndDeleteByNumber()
+        private static void ShowAllTechnicalDeptsAndDeleteTechDept()
         {
             Console.Clear();
             Console.WriteLine(new String('=', 40));
@@ -566,14 +566,14 @@ namespace UI
             Console.WriteLine(new String('=', 40));
 
             bool validEnter = false;
-            int numberOfTask = -1;
+            int numberOfTask;
 
             while (!validEnter && IssueBuilder.IssueTechnicalDeptsList.Count != 0)
             {
                 TextColorer.MenuChoise("Please enter the number of technical dept to delete");
-                if (Int32.TryParse(Console.ReadLine(), out int value) && value >= 0 && value < IssueBuilder.IssueTechnicalDeptsList.Count)
+                if (Int32.TryParse(Console.ReadLine(), out int value) && value > 0 && value <= IssueBuilder.IssueTechnicalDeptsList.Count)
                 {
-                    numberOfTask = value-1;
+                    numberOfTask = value;
                     validEnter = true;
                     IssueBuilder.IssueTechnicalDeptsList.RemoveAt(numberOfTask);
                     Console.WriteLine("Task has been successfully deleted!");
@@ -583,7 +583,7 @@ namespace UI
                 else
                 {
                     TextColorer.Alert("Invalid input!");
-                    Thread.Sleep(600);
+                    Thread.Sleep(400);
                 }
             }
         }
