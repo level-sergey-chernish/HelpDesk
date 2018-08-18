@@ -485,7 +485,7 @@ namespace UI
             {
                 for (int i = 0; i < IssueBuilder.IssueTasksList.Count; i++)
                 {
-                    Console.WriteLine($"Task {IssueBuilder.IssueTasksList[i].Name} with number {i}");
+                    Console.WriteLine($"Task {IssueBuilder.IssueTasksList[i].Name} with number {i+1}");
                 }
             }
             Console.WriteLine(new String('=', 40));
@@ -498,7 +498,7 @@ namespace UI
                 TextColorer.MenuChoise("Please enter the number of task to delete");
                 if (Int32.TryParse(Console.ReadLine(), out int value) && value >= 0 && value < IssueBuilder.IssueTasksList.Count)
                 {
-                    numberOfTask = value;
+                    numberOfTask = value-1;
                     validEnter = true;
                     IssueBuilder.IssueTasksList.RemoveAt(numberOfTask);
                     Console.WriteLine("Task has been successfully deleted!");
@@ -519,7 +519,7 @@ namespace UI
             Console.WriteLine(new String('=', 40));
             for (int i = 0; i < IssueBuilder.IssueBugsList.Count; i++)
             {
-                Console.WriteLine($"Task {IssueBuilder.IssueBugsList[i].Name} with number {i}");
+                Console.WriteLine($"Task {IssueBuilder.IssueBugsList[i].Name} with number {i+1}");
             }
             Console.WriteLine(new String('=', 40));
 
@@ -531,7 +531,7 @@ namespace UI
                 TextColorer.MenuChoise("Please enter the number of bug to delete");
                 if (Int32.TryParse(Console.ReadLine(), out int value) && value >= 0 && value < IssueBuilder.IssueBugsList.Count)
                 {
-                    numberOfTask = value;
+                    numberOfTask = value-1;
                     validEnter = true;
                     IssueBuilder.IssueBugsList.RemoveAt(numberOfTask);
                     Console.WriteLine("Task has been successfully deleted!");
@@ -552,7 +552,7 @@ namespace UI
             Console.WriteLine(new String('=', 40));
             for (int i = 0; i < IssueBuilder.IssueTechnicalDeptsList.Count; i++)
             {
-                Console.WriteLine($"Task {IssueBuilder.IssueTechnicalDeptsList[i].Name} with number {i}");
+                Console.WriteLine($"Task {IssueBuilder.IssueTechnicalDeptsList[i].Name} with number {i+1}");
             }
             Console.WriteLine(new String('=', 40));
 
@@ -564,7 +564,7 @@ namespace UI
                 TextColorer.MenuChoise("Please enter the number of technical dept to delete");
                 if (Int32.TryParse(Console.ReadLine(), out int value) && value >= 0 && value < IssueBuilder.IssueTechnicalDeptsList.Count)
                 {
-                    numberOfTask = value;
+                    numberOfTask = value-1;
                     validEnter = true;
                     IssueBuilder.IssueTechnicalDeptsList.RemoveAt(numberOfTask);
                     Console.WriteLine("Task has been successfully deleted!");
