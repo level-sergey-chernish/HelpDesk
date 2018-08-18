@@ -429,13 +429,22 @@ namespace UI
             }
             else
             {
-                Console.WriteLine(new String('=', 40));
+                TextColorer.MenuHeader("HELPDESK SYSTEM (Bug Tracking)");
+                TextColorer.Notify("Choose Your action:");
+                Console.WriteLine(new String('_', 40));
                 TextColorer.MenuChoise($"What kind of issues do you want to delete?\n\n" +
                     $"To delete some Task press \"1\"\n" +
                     $"To delete some Bug press \"2\"\n" +
                     $"To delete some Technical Dept press \"3\"");
-                Console.WriteLine(new String('=', 40));
+                Console.WriteLine(new String('_', 40));
                 TextColorer.Notify("r - Return to previous menu");
+                TextColorer.Alert(new String('_', 45));
+                TextColorer.Alert($"Total issues:{IssueBuilder.TotalIssuesQuantity}     ToDo Complexivity:{IssueBuilder.Complexity}\n");
+                TextColorer.Alert($"Tasks:{IssueBuilder.TaskIssuesQuantity}     Bugs:{IssueBuilder.BugIssuesQuantity}     " +
+                    $"Technical Depts:{IssueBuilder.TechnicalDeptsIssuesQuantity}\n");
+                TextColorer.Alert(new String('_', 45));
+
+                Console.Write(">>:");
 
                 string choise = Console.ReadLine();
                 bool mainMenu = false;
