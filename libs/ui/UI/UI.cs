@@ -488,6 +488,9 @@ namespace UI
             if (IssueBuilder.IssueTasksList.Count == 0)
             {
                 TextColorer.Notify("There is no task to delete");
+                Console.WriteLine(new String('=', 40));
+                Thread.Sleep(400);
+                Console.Clear();
             }
             else
             {
@@ -526,6 +529,13 @@ namespace UI
         {
             Console.Clear();
             Console.WriteLine(new String('=', 40));
+            if (IssueBuilder.IssueBugsList.Count == 0)
+            {
+                TextColorer.Notify("There is no bug to delete");
+                Console.WriteLine(new String('=', 40));
+                Thread.Sleep(400);
+                Console.Clear();
+            }
             for (int i = 0; i < IssueBuilder.IssueBugsList.Count; i++)
             {
                 Console.WriteLine($"Task {IssueBuilder.IssueBugsList[i].Name} with number {i+1}");
@@ -559,6 +569,13 @@ namespace UI
         {
             Console.Clear();
             Console.WriteLine(new String('=', 40));
+            if (IssueBuilder.IssueTechnicalDeptsList.Count == 0)
+            {
+                TextColorer.Notify("There is no technical dept to delete");
+                Console.WriteLine(new String('=', 40));
+                Thread.Sleep(400);
+                Console.Clear();
+            }
             for (int i = 0; i < IssueBuilder.IssueTechnicalDeptsList.Count; i++)
             {
                 Console.WriteLine($"Task {IssueBuilder.IssueTechnicalDeptsList[i].Name} with number {i+1}");
@@ -573,7 +590,7 @@ namespace UI
                 TextColorer.MenuChoise("Please enter the number of technical dept to delete");
                 if (Int32.TryParse(Console.ReadLine(), out int value) && value > 0 && value <= IssueBuilder.IssueTechnicalDeptsList.Count)
                 {
-                    numberOfTask = value;
+                    numberOfTask = value-1;
                     validEnter = true;
                     IssueBuilder.IssueTechnicalDeptsList.RemoveAt(numberOfTask);
                     Console.WriteLine("Task has been successfully deleted!");
