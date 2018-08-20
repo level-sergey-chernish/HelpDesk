@@ -1,6 +1,0 @@
-C:\Users\user\source\repos\ClassTask\ClassTask\bin\Debug\ClassTask.dll
-C:\Users\user\source\repos\ClassTask\ClassTask\bin\Debug\ClassTask.pdb
-C:\Users\user\source\repos\ClassTask\ClassTask\obj\Debug\ClassTask.csprojAssemblyReference.cache
-C:\Users\user\source\repos\ClassTask\ClassTask\obj\Debug\ClassTask.csproj.CoreCompileInputs.cache
-C:\Users\user\source\repos\ClassTask\ClassTask\obj\Debug\ClassTask.dll
-C:\Users\user\source\repos\ClassTask\ClassTask\obj\Debug\ClassTask.pdb
