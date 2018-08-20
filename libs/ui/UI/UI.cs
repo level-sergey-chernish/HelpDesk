@@ -54,6 +54,7 @@ namespace UI
                     case "3":
                         Console.Clear();
                         ShowIssues();
+                        Return();
                         menuExit = true;
                         MainMenu();
                         break;
@@ -297,6 +298,10 @@ namespace UI
                         Console.WriteLine();
                         TextColorer.Notify($"Name of task is {IssueBuilder.IssueTasksList[i].Name}");
                         TextColorer.Notify($"Difficulty of this task is {IssueBuilder.IssueTasksList[i].Difficulty}");
+                        if (IssueBuilder.IssueTasksList[i].IssueStatus == true)
+                        {
+                            TextColorer.Notify("This Task is resolved");
+                        }
                         Console.WriteLine();
                         TextColorer.Notify(new String('=', 35));
                     }
@@ -313,6 +318,10 @@ namespace UI
                         Console.WriteLine();
                         TextColorer.Notify($"Name of bug is {IssueBuilder.IssueBugsList[i].Name}");
                         TextColorer.Notify($"Difficulty of this bug is {IssueBuilder.IssueBugsList[i].Difficulty}");
+                        if (IssueBuilder.IssueBugsList[i].IssueStatus == true)
+                        {
+                            TextColorer.Notify("This Bug is resolved");
+                        }
                         Console.WriteLine();
                         TextColorer.Notify(new String('=', 35));
                     }
@@ -329,6 +338,10 @@ namespace UI
                         Console.WriteLine();
                         TextColorer.Notify($"Name of technical Dept is {IssueBuilder.IssueTechnicalDeptsList[i].Name}");
                         TextColorer.Notify($"Difficulty of this Technical dept is {IssueBuilder.IssueTechnicalDeptsList[i].Difficulty}");
+                        if (IssueBuilder.IssueTechnicalDeptsList[i].IssueStatus == true)
+                        {
+                            TextColorer.Notify("This Technical Dept is resolved");
+                        }
                         Console.WriteLine();
                         TextColorer.Notify(new String('=', 35));
                     }
@@ -340,6 +353,9 @@ namespace UI
                 }
             }
             Console.WriteLine();
+        }
+        private static void Return()
+        { 
             TextColorer.MenuChoise("r - Return to previouse menu");
             string switching = Console.ReadLine()?.ToLower();
             bool menuExit = false;
@@ -423,11 +439,12 @@ namespace UI
                 IssueBuilder.IssueTechnicalDeptsList.Count == 0)
             {
                 Console.WriteLine("There is nothing to delete. Go back to main menu.");
-                Thread.Sleep(500);
+                Thread.Sleep(1500);
                 MainMenu();
             }
             else
             {
+                ShowIssues();
                 TextColorer.MenuHeader("HELPDESK SYSTEM (Bug Tracking)");
                 TextColorer.Notify("Choose Your action:");
                 TextColorer.MenuChoise($"What kind of issues do you want to delete?\n\n" +
